@@ -1,0 +1,76 @@
+html, body {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #4b4a4a, #1b1b1b 85%);
+}
+
+.logo {
+    font-size: 36px;
+    font-family: 'Ubuntu';
+    color: white;
+}
+
+.promo__wrapper {
+    margin: 40px 85px;
+}
+
+.weather__form {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    padding-top: 105px;
+}
+
+.weather__form-input {
+    font-size: 18px;
+    font-family: 'Ubuntu';
+    background: linear-gradient(45deg, #202020 15%, #383838);
+    width: 364px;
+    height: 46px;
+    border: 3px solid rgb(102, 100, 100);
+    color: white;
+    padding-left: 25px;
+    outline: none;
+    margin: 15px;
+    border-radius: 25px;
+}
+
+.weather__form-input::placeholder {
+    text-align: left;
+    font-family: 'Ubuntu', "FontAwesome";
+    color: rgb(201, 197, 197);
+}
+
+
+
+
+.forecast {
+    padding-top: 5px;
+    min-height: 550px;
+}
+
+.forecast__title {
+    font-size: 45px;
+    font-family: 'Ubuntu';
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 0.748;
+    text-align: center;
+
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.forecast__content {
+    padding-top: 55px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+    justify-content: space-around;
+    justify-items: center;
+}

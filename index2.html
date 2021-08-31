@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="promo">
+        <div class="promo__wrapper">
+            <header class="header">
+                <h1 class="logo"> Weather-Forecast</h1>
+            </header>
+        </div>
+    </div>
+    <main>
+        <section class="weather">
+            <form action="/" method="post">
+                <div class="weather__form">
+                    <div class="weather__form-block">
+                        <div>
+                            <input class="weather__form-input" type="text" class="form-control" placeholder=" Название города">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section class="forecast">
+            <div class="forecast__wrapper">
+                <div class="forecast__content">
+                    <div class="forecast__box">
+                        <div>
+                            <h2 class="forecast__box-name">Сегодня</h2>
+                        </div>
+                        <div class="forecast__weather">
+                            <h3 class="forecast__temperature">+ 20°</h3>
+                            <img class="forecast__icons" src="png/sunny.png" alt="#" class="grid-cards__img">
+                        </div>
+                        <div class="forecast__descr-list">
+                            <p class="forecast__descr">Солнечно
+                            <p class="forecast__descr">4,7 м/c ветер
+                            <p class="forecast__descr">+18 днем, +15 ночью
+                        </div>
+                    </div>
+                    <div class="forecast__box">
+                        <div>
+                            <h2 class="forecast__box-name">Завтра</h2>
+                        </div>
+                        <div class="forecast__weather">
+                            <h3 class="forecast__temperature">+ 13°
+                            </h3>
+                            <img class="forecast__icons" src="png/cloudy_with_light_rain.png" alt="#" class="grid-cards__img">
+                        </div>
+                        <div class="forecast__descr-list">
+                            <p class="forecast__descr">Дождь
+                            <p class="forecast__descr">4,7 м/c ветер
+                            <p class="forecast__descr">+14 днем, +11 ночью
+                        </div>
+                    </div>
+                    <div class="forecast__box">
+                        <div>
+                            <h2 class="forecast__box-name">[месяц] [число]
+                            </h2>
+                        </div>
+                        <div class="forecast__weather">
+                            <h3 class="forecast__temperature">+ 15°
+                            </h3>
+                            <img class="forecast__icons" src="png/black_low_cloud.png" alt="#" class="grid-cards__img">
+                        </div>
+                        <div class="forecast__descr-list">
+                            <p class="forecast__descr">Пасмурно
+                            <p class="forecast__descr">4,7 м/c ветер
+                            <p class="forecast__descr">+14 днем, +15 ночью
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+</body>
+</html>
