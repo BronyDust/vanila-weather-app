@@ -1,11 +1,18 @@
-const apiKey = localStorage.getItem('api_key');
+import LocalStorage from './services/LocalStorage.js';
 
-if (!apiKey) {
-  const newKey = prompt('Enter API key');
-  if (!newKey) throw new Error('Empty');
-  if (newKey.length !== 31) throw new Error('Too short');
+const apiKeyStorage = new LocalStorage('api_key', function() {
+  try {
+    const apiKey = this.getValue();
 
-  localStorage.setItem('api_key', newKey);
-}
+    if (!apiKey) {
+      const newKey = prompt('Enter API key');
+      if (!newKey) throw new Error('Empty');
+      if (newKey.length !== 31) throw new Error('Too short');
 
-console.log('DONE');
+      this.setValue(newKey);
+    }
+  } catch (error) {
+    alert(error.message);
+    this.clear();
+  }
+});
