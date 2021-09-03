@@ -16,3 +16,8 @@ const apiKeyStorage = new LocalStorage('api_key', function() {
     this.clear();
   }
 });
+
+const button = document.getElementById('reset');
+button.onclick = () => {
+  apiKeyStorage.clear();
+}
