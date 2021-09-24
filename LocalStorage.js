@@ -7,7 +7,6 @@ class LocalStorage {
   #key;
   #observer;
 
-
   constructor(key, observer) { //вызов конструктора в который педераются аргументы key, observer
     const data = localStorage.getItem(key); //неизменяемая переменная data имеющая значение ключа в хранилище 
 
@@ -28,7 +27,6 @@ class LocalStorage {
   getValue() { //добавление значения
     return this.#value; //возвращение значение
   }
-
 
   clear() { //очистка ключа и его значения
     localStorage.removeItem(this.#key); // обращение к хранилищу, удаление ключа и его значения
