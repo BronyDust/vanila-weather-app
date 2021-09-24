@@ -1,34 +1,38 @@
-class LocalStorage {
+/**
+ * Наблюдатель за ключами локального хранилища, в классе которого присутствуют
+ * приватные поля и доступ к этим полям есть у методов в теле класса.
+ */
+ class LocalStorage {
   #value;
   #key;
   #observer;
 
-  constructor(key, observer) {
-    const data = localStorage.getItem(key);
+  constructor(key, observer) { //вызов конструктора в который педераются аргументы key, observer
+    const data = localStorage.getItem(key); //неизменяемая переменная data имеющая значение ключа в хранилище 
 
-    this.#key = key;
-    this.#value = data;
-    this.#observer = observer.bind(this);
+    this.#key = key; //приравнивание ключа к полю с именем #key
+    this.#value = data; //приравние значения переменной к полю с именем #value
+    this.#observer = observer.bind(this); //приравнивание ссылки на существующего наблюдателя к полю с именем #observer, где
 
+    this.#observer(); //отслеживание изменений
+  }
+
+  setValue(newValue) { //добавление значения newValue
+    this.#value = newValue; //приватное поле #value равняется переменной newValue
     this.#observer();
+
+    localStorage.setItem(this.#key, newValue);  //  добавление ключа которое привязано к полю #key и значением ключа newValue
   }
 
-  setValue(newValue) {
-    this.#value = newValue;
-    this.#observer();
-
-    localStorage.setItem(this.#key, newValue);
+  getValue() { //добавление значения
+    return this.#value; //возвращение значение
   }
 
-  getValue() { 
-    return this.#value;
-  }
-
-  clear() {
-    localStorage.removeItem(this.#key);
-    this.#value = undefined;
+  clear() { //очистка ключа и его значения
+    localStorage.removeItem(this.#key); // обращение к хранилищу, удаление ключа и его значения
+    this.#value = undefined; //значение ключа неоппределенное
     this.#observer();
   }
 }
 
-export default LocalStorage;
+export default LocalStorage; //экспортирование класса LocalStorage по умолчанию
