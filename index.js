@@ -1,11 +1,23 @@
-const apiKey = localStorage.getItem('api_key'); // обращение к локальному хранилищу, метод getItem используется для получение значения ключа api_key
+import LocalStorage from './services/LocalStorage.js';
 
-if (!apiKey) {  // если apiKey имеет значение false
-  const newKey = prompt('Enter API key'); // выводит в окне браузера окно с полем для ввода ключа 
-  if (!newKey) throw new Error('Empty'); // если значение переменной newKey является false, то появляется ошибка
-  if (newKey.length !== 31) throw new Error('Too short'); //если длина ключа не ровна 31 символам, то появляется ошибка
+const apiKeyStorage = new LocalStorage('api_key', function() {
+  try {
+    const apiKey = this.getValue();
 
-  localStorage.setItem('api_key', newKey); // добавление ключа с именем api_key и значением ключа newKey
+    if (!apiKey) {
+      const newKey = prompt('Enter API key');
+      if (!newKey) throw new Error('Empty');
+      if (newKey.length !== 31) throw new Error('Too short');
+
+      this.setValue(newKey);
+    }
+  } catch (error) {
+    alert(error.message);
+    this.clear();
+  }
+});
+
+const button = document.getElementById('reset');
+button.onclick = () => {
+  apiKeyStorage.clear();
 }
-
-console.log('DONE');
