@@ -1,1 +1,0 @@
-class PopupWindow extends HTMLElement { }
