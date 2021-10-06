@@ -1,10 +1,18 @@
 class APIKeyForm extends HTMLElement {
   #render() {
-    customElements.define('api-key-form', APIKeyForm)
+    this.innerHTML = ''; // Cleanup previous component view
+
+    const popupBody = document.createElement('div');
+    popupBody.classList.add('popup__body');
+
+    this.appendChild(popupBody);
   }
+
   constructor() {
     super();
-    let APIKeyForm = document.createElement('api-key-form');
-    this.innerHTML = 'api-key-form element';
+
+    this.#render();
   }
 }
+
+customElements.define('api-key-form', APIKeyForm);
