@@ -10,6 +10,7 @@ class APIKeyForm extends HTMLElement {
     popupRoot.appendChild(popupBody);
 
     const popupForm = document.createElement('form');
+    popupForm.classList.add('popup__form')
     popupForm.setAttribute('action', '#');
     popupForm.setAttribute('method', 'post');
     popupBody.appendChild(popupForm);
@@ -29,14 +30,10 @@ class APIKeyForm extends HTMLElement {
     popupInput.setAttribute('pattern', '[A-Za-z0-9]{32}');
     popupForm.appendChild(popupInput);
 
-    const popupBTNForm = document.createElement('div');
-    popupBTNForm.classList.add('popup__btn-form');
-    popupForm.appendChild(popupBTNForm);
-
     const popupButton = document.createElement('button');
     popupButton.classList.add('popup__button');
     popupButton.innerHTML = 'Отправить';
-    popupBTNForm.appendChild(popupButton);
+    popupForm.appendChild(popupButton);
 
     this.appendChild(popupRoot);
   }

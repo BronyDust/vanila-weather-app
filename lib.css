@@ -19,6 +19,12 @@
   border: 3px solid #666464;
 }
 
+.popup__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .popup__title {
   font-size: 30px;
   font-family: "Ubuntu";
@@ -44,7 +50,6 @@
 }
 
 .popup__btn-form {
-  padding-top: 20px;
   display: flex;
   justify-content: center;
 }
