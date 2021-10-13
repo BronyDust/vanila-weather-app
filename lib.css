@@ -29,6 +29,7 @@
   font-size: 30px;
   font-family: "Ubuntu";
   color: #fff;
+  margin-bottom: 15px;
 }
 
 .popup__input {
@@ -41,17 +42,13 @@
   color: #fff;
   outline: none;
   border-radius: 25px;
+  margin-bottom: 15px;
 }
 
 .popup__input::placeholder {
   text-align: left;
   font-family: "Ubuntu", "FontAwesome";
   color: #c9c5c5;
-}
-
-.popup__btn-form {
-  display: flex;
-  justify-content: center;
 }
 
 .popup__button {
@@ -63,4 +60,5 @@
   border: 3px solid #666464;
   color: #c9c5c5;
   border-radius: 25px;
+  cursor: pointer;
 }
