@@ -10,23 +10,30 @@ class APIKeyForm extends HTMLElement {
     popupRoot.appendChild(popupBody);
 
     const popupForm = document.createElement('form');
+    popupForm.classList.add('popup__form')
     popupForm.setAttribute('action', '#');
     popupForm.setAttribute('method', 'post');
+    popupBody.appendChild(popupForm);
 
-    const popupTitle = document.createElement('h2');
+    const APIKeyInputID = 'api_key_input';
+    const popupTitle = document.createElement('label');
+    popupTitle.innerHTML = 'Введите API-ключ';
+    popupTitle.setAttribute('for', APIKeyInputID);
     popupTitle.classList.add('popup__title');
+    popupForm.appendChild(popupTitle);
 
     const popupInput = document.createElement('input');
+    popupInput.id = APIKeyInputID;
     popupInput.classList.add('popup__input');
     popupInput.setAttribute('type', 'text');
     popupInput.setAttribute('text', ' API-ключ');
     popupInput.setAttribute('pattern', '[A-Za-z0-9]{32}');
-
-    const popupBTNForm = document.createElement('div');
-    popupBTNForm.classList.add('popup__btn-form');
+    popupForm.appendChild(popupInput);
 
     const popupButton = document.createElement('button');
     popupButton.classList.add('popup__button');
+    popupButton.innerHTML = 'Отправить';
+    popupForm.appendChild(popupButton);
 
     this.appendChild(popupRoot);
   }
