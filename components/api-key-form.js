@@ -28,7 +28,7 @@ class APIKeyForm extends HTMLElement {
 
     const popupForm = document.createElement('form');
 
-    popupForm.onsubmit = this.#formSubmitHandler.bind(this);
+    popupForm.onsubmit = this.#boundFormSubmitHandler;
     popupForm.classList.add('popup__form')
     popupForm.setAttribute('action', '#');
     popupForm.setAttribute('method', 'post');
@@ -60,6 +60,7 @@ class APIKeyForm extends HTMLElement {
   constructor() {
     super();
 
+    this.#boundFormSubmitHandler = this.#formSubmitHandler.bind(this);
     this.#render();
   }
 }
