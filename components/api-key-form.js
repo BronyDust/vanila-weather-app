@@ -2,12 +2,18 @@ class APIKeyForm extends HTMLElement {
   #inputId = 'api_key_input';
 
   #formSubmitHandler(event) {
-    event.preventDefault();
+    event.preventDefault(); // Отменить стандартное поведение события
 
-    const { target } = event;
-    if (target instanceof HTMLFormElement) {
+    const { target } = event; // Достать ссылку на автора события
+    if (target instanceof HTMLFormElement) { // Если автор - html форма (как ожидается)...
+      /**
+       * Формируем FormData на основе html формы
+       * 
+       * Каждый инпут станет полем. Ключ - атрибут name
+       */
       const formData = new FormData(target);
 
+      // Получаем значение поля по имени (это и есть api ключ)
       const takenApiKey = formData.get(this.#inputId);
       console.log(takenApiKey);
     }
@@ -28,7 +34,7 @@ class APIKeyForm extends HTMLElement {
 
     const popupForm = document.createElement('form');
 
-    popupForm.onsubmit = this.#boundFormSubmitHandler;
+    popupForm.onsubmit = this.#boundFormSubmitHandler; // Коннект слушателя на событие submit (контекст изменен, см. конструктор)
     popupForm.classList.add('popup__form')
     popupForm.setAttribute('action', '#');
     popupForm.setAttribute('method', 'post');
@@ -60,6 +66,7 @@ class APIKeyForm extends HTMLElement {
   constructor() {
     super();
 
+    // Проброс контекста раз и навсегда, чтобы не делать это на каждый render
     this.#boundFormSubmitHandler = this.#formSubmitHandler.bind(this);
     this.#render();
   }
