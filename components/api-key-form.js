@@ -1,4 +1,17 @@
 class APIKeyForm extends HTMLElement {
+  #formSubmitHandler(event) {
+    event.preventDefault();
+
+    const { target } = event;
+    if (target instanceof HTMLFormElement) {
+      const formData = new FormData(target);
+      console.log(formData);
+    }
+  }
+
+  /**
+   * Отрисовать view компонента. Учтено обнуление предыдущего view
+   */
   #render() {
     this.innerHTML = ''; // Cleanup previous component view
 
@@ -10,6 +23,8 @@ class APIKeyForm extends HTMLElement {
     popupRoot.appendChild(popupBody);
 
     const popupForm = document.createElement('form');
+
+    popupForm.onsubmit = this.#formSubmitHandler;
     popupForm.classList.add('popup__form')
     popupForm.setAttribute('action', '#');
     popupForm.setAttribute('method', 'post');
