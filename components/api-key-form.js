@@ -93,4 +93,6 @@ class APIKeyForm extends HTMLElement {
   }
 }
 
+export default APIKeyForm;
+
 customElements.define('api-key-form', APIKeyForm);
