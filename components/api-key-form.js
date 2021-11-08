@@ -95,4 +95,6 @@ class APIKeyForm extends HTMLElement {
 
 export default APIKeyForm;
 
+// Элемент должен иметь определение для всей системы, чтобы получить представление в DOM.
+// То есть если не запустить регистрацию customElement и просто создать экземпляр APIKeyForm - он не добавится в DOM. Будет ошибка Illegal contructor
 customElements.define('api-key-form', APIKeyForm);
