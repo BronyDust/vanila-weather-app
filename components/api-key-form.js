@@ -86,6 +86,9 @@ class APIKeyForm extends HTMLElement {
 
     // Проброс контекста раз и навсегда, чтобы не делать это на каждый render
     this.#boundFormSubmitHandler = this.#formSubmitHandler.bind(this);
+  }
+
+  connectedCallback() {
     this.#render();
   }
 }
