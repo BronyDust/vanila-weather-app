@@ -1,5 +1,11 @@
+/**
+ * Функция заглушка
+ */
+const noop = () => {};
+
 class APIKeyForm extends HTMLElement {
   #inputId = 'api_key_input';
+  #boundFormSubmitHandler = noop; // Приватные методы должны быть предопределены до вызова конструктора, так что здесь изначально стоит функция-пустышка noop. Далее этот метод будет переопределен
 
   #formSubmitHandler(event) {
     event.preventDefault(); // Отменить стандартное поведение события
