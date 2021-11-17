@@ -1,5 +1,16 @@
+/**
+ * Функция заглушка
+ */
+const noop = () => {};
+
+/**
+ * Имя кастомного события формы получения ключа пользователя
+ */
+export const SUBMIT_KEY_EVENT_NAME = '#vwa-submit-key-form';
+
 class APIKeyForm extends HTMLElement {
   #inputId = 'api_key_input';
+  #boundFormSubmitHandler = noop; // Приватные методы должны быть предопределены до вызова конструктора, так что здесь изначально стоит функция-пустышка noop. Далее этот метод будет переопределен
 
   #formSubmitHandler(event) {
     event.preventDefault(); // Отменить стандартное поведение события
@@ -15,7 +26,14 @@ class APIKeyForm extends HTMLElement {
 
       // Получаем значение поля по имени (это и есть api ключ)
       const takenApiKey = formData.get(this.#inputId);
-      console.log(takenApiKey);
+      /**
+       * Объект кастомного ивента, который используется, чтобы уведомить всех "слушателей" в системе
+       */
+      const submitEvent = new CustomEvent(SUBMIT_KEY_EVENT_NAME, {
+        detail: takenApiKey
+      });
+      // Запускаем ивент с полем detail, чтобы передать данные
+      this.dispatchEvent(submitEvent);
     }
   }
 
@@ -68,8 +86,15 @@ class APIKeyForm extends HTMLElement {
 
     // Проброс контекста раз и навсегда, чтобы не делать это на каждый render
     this.#boundFormSubmitHandler = this.#formSubmitHandler.bind(this);
+  }
+
+  connectedCallback() {
     this.#render();
   }
 }
 
+export default APIKeyForm;
+
+// Элемент должен иметь определение для всей системы, чтобы получить представление в DOM.
+// То есть если не запустить регистрацию customElement и просто создать экземпляр APIKeyForm - он не добавится в DOM. Будет ошибка Illegal contructor
 customElements.define('api-key-form', APIKeyForm);
